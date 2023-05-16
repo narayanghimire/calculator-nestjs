@@ -1,16 +1,21 @@
 name: Google-cloud-deploy-workflow
 
 on:
+  push:
+    branches:
+      - main
   workflow_dispatch:
     inputs:
-      ref:
-        description: Branch or tag name
-        required: true
+      deploy_branch:
+        description: 'Branch or tag'
+        required: false
+        type: string
+        default: main
 env:
   PROJECT_ID: calculator-nestjs-4781
   REGION: europe-west3
   # project-name but it can be anything you want
-  REPO_NAME: calculator-nest-js
+  REPO_NAME: calculator-nestjs
 
 jobs:
   build-and-deploy:
