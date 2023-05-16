@@ -1,4 +1,4 @@
-name: Google-cloud-deploy-workflow
+name: Calculator-google-cloud-deploy-workflow
 
 on:
   push:
@@ -40,7 +40,7 @@ jobs:
 
       - name: Build and tag the docker image
         run: |-
-          docker build . --tag gcr.io/$PROJECT_ID/$REPO_NAME:$GITHUB_SHA
+          docker build . --file apps/calculator/Dockerfile --target production --tag gcr.io/$PROJECT_ID/$REPO_NAME:$GITHUB_SHA
 
       - name: Push the image to the Google Container Registry (GCR)
         run: |-
