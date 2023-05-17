@@ -68,12 +68,8 @@ GET /calculus/history HTTP/1.1
 Host: localhost:8001
 x-client: test-client
    ```
-
 ##### Response
-- Success: An array of the last 5 records, each being an object of the form
-
-
    ```bash
-- Success: `{ "query": false, "result": number }`
+- Success: `{ "query": string, "result": number }`
 - Error:  `{ "error": true, "message": "string" }`  with specific HTTP status code
    ```
