@@ -1,1 +1,1 @@
-export const VALID_CLIENT = 'bike24';
+export const VALID_CLIENT = 'test-client';
