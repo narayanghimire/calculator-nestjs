@@ -1,15 +1,16 @@
-import { Inject, Injectable } from '@nestjs/common';
-import { QUERY_DECRYPTER_INTERFACE } from '@app/calculator/src/constants/constants';
-import { DecrypterInterface } from '@app/calculator/src/decrypter/decrypter.interface';
+import { BadRequestException, Inject, Injectable } from "@nestjs/common";
 
 @Injectable()
 export class DecryptService {
-  constructor(
-    @Inject(QUERY_DECRYPTER_INTERFACE)
-    private readonly decrypter: DecrypterInterface,
-  ) {}
+  private decryptedString: string;
 
   public decrypt(encodedString: string): string {
-    return this.decrypter.decrypt(encodedString);
+    try {
+        this.decryptedString = Buffer.from(encodedString, 'base64').toString();
+    } catch (err) {
+      throw new BadRequestException('Invalid encoded string given');
+    }
+
+    return this.decryptedString;
   }
 }

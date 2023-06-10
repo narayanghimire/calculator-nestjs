@@ -1,35 +1,17 @@
-import { DecryptService } from '@app/calculator/src/services/decrypt.service';
-import { Test, TestingModule } from '@nestjs/testing';
-import { QUERY_DECRYPTER_INTERFACE } from '@app/calculator/src/constants/constants';
+import { DecryptService } from "@app/calculator/src/services/decrypt.service";
 
 describe('DecryptService', () => {
   let service: DecryptService;
-  let decrypterInterface;
-
-  beforeEach(async () => {
-    decrypterInterface = {
-      decrypt: jest.fn(),
-    };
-    const module: TestingModule = await Test.createTestingModule({
-      providers: [
-        DecryptService,
-        {
-          provide: QUERY_DECRYPTER_INTERFACE,
-          useValue: decrypterInterface,
-        },
-      ],
-    }).compile();
-
-    service = module.get<DecryptService>(DecryptService);
+  beforeEach(() => {
+    service = new DecryptService();
   });
 
   describe('decrypt', () => {
     it('should call the decrypt method of the decrypter with the provided encoded string', () => {
-      const encodedString = 'SGVsbG8gd29ybGQ=';
+      const buffer = Buffer.from('2+3-(3*9)/12', 'utf-8');
+      const encodedString = buffer.toString('base64');  // "MitDKzMtKDMqOSkvMTI="
       const decryptedString = '2+3-(3*9)/12';
-      decrypterInterface.decrypt.mockReturnValue(decryptedString);
       const result = service.decrypt(encodedString);
-      expect(decrypterInterface.decrypt).toHaveBeenCalledWith(encodedString);
       expect(result).toBe(decryptedString);
     });
   });
