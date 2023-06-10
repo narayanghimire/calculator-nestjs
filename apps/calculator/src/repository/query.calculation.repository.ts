@@ -3,7 +3,7 @@ import { ICalculationRepository } from '@app/calculator/src/repository/calculati
 
 @Injectable()
 export class QueryCalculationRepository implements ICalculationRepository {
-  async calculate(expression: string): Promise<number> {
+  public async calculate(expression: string): Promise<number> {
     return eval(expression);
   }
 }

@@ -3,7 +3,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import {
   CALCULATION_REPOSITORY_PERSIST_TOKEN,
   CALCULATION_REPOSITORY_TOKEN,
-} from '../../../src/constants/constants';
+} from '../constants/constants';
 import { CalculatorService } from '@app/calculator/src/services/calculator.service';
 import { CalculationException } from '@app/calculator/src/exception/calculation.exception';
 

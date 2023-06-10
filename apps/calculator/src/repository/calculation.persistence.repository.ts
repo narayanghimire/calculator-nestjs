@@ -15,11 +15,11 @@ export class CalculationPersistenceRepository
     private calculationModel: Model<CalculationSchemaClass>,
   ) {}
 
-  async saveCalculation(query: string, result: number): Promise<void> {
+  public async saveCalculation(query: string, result: number): Promise<void> {
     await this.calculationModel.create({ query, result });
   }
 
-  async getLastFiveCalculationsHistory(): Promise<CalculationHistoryDto[]> {
+  public async getLastFiveCalculationsHistory(): Promise<CalculationHistoryDto[]> {
     const calculationHistory = await this.calculationModel
       .find()
       .sort({ createdAt: -1 })

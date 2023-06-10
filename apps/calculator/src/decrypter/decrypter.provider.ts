@@ -5,7 +5,7 @@ import { DecrypterInterface } from './decrypter.interface';
 export class DecrypterProvider implements DecrypterInterface {
   private decryptedString: string | boolean;
 
-  decrypt(encodedString: string): string {
+  public decrypt(encodedString: string): string {
     try {
       this.decryptedString = Buffer.from(encodedString, 'base64').toString();
     } catch (err) {

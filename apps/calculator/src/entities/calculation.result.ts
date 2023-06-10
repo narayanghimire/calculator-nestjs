@@ -2,10 +2,10 @@ import { IsBoolean, IsNumber } from 'class-validator';
 
 export class CalculationResult {
   @IsBoolean()
-  readonly error: boolean;
+  public readonly error: boolean;
 
   @IsNumber()
-  readonly result: number;
+  public readonly result: number;
 
   constructor(result: number, error = false) {
     this.error = error;

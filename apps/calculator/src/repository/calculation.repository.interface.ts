@@ -1,3 +1,3 @@
 export interface ICalculationRepository {
-  calculate(expression: string): Promise<number>;
+   calculate(expression: string): Promise<number>;
 }
