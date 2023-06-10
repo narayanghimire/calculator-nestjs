@@ -11,7 +11,7 @@ import { ExceptionResponseInterface } from './exception.response.interface';
 import { ClientIdentifierException } from '@app/common/client.identifier.exception';
 
 export class ExceptionHandler {
-  handleException(exception: Error): ExceptionResponseInterface {
+  public handleException(exception: Error): ExceptionResponseInterface {
     if (exception instanceof CalculationException) {
       return new CalculationExceptionResponse(exception.message);
     }

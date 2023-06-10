@@ -9,7 +9,7 @@ export class DecryptService {
     private readonly decrypter: DecrypterInterface,
   ) {}
 
-  decrypt(encodedString: string): string {
+  public decrypt(encodedString: string): string {
     return this.decrypter.decrypt(encodedString);
   }
 }

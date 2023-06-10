@@ -17,7 +17,7 @@ export class CalculatorService {
     @Inject(CALCULATION_REPOSITORY_PERSIST_TOKEN)
     private readonly persist: ICalculationPersistenceRespository,
   ) {}
-  async calculate(query: string): Promise<CalculationResult> {
+  public async calculate(query: string): Promise<CalculationResult> {
     try {
       const result = await this.calculationRepository.calculate(query);
       return new CalculationResult(result);
@@ -26,7 +26,7 @@ export class CalculatorService {
     }
   }
 
-  async persistCalculation(query: string, result: number): Promise<void> {
+  public async persistCalculation(query: string, result: number): Promise<void> {
     try {
       await this.persist.saveCalculation(query, result);
     } catch (error) {
@@ -34,7 +34,7 @@ export class CalculatorService {
     }
   }
 
-  async getQueryCalculationHistory(): Promise<CalculationHistoryDto[]> {
+  public async getQueryCalculationHistory(): Promise<CalculationHistoryDto[]> {
     try {
       return await this.persist.getLastFiveCalculationsHistory();
     } catch (error) {

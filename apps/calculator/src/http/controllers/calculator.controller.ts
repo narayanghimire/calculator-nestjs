@@ -14,7 +14,7 @@ export class CalculatorController {
   ) {}
 
   @Get('calculus')
-  async calculate(
+  public async calculate(
     @Query() calculationRequest: CalculationRequest,
   ): Promise<CalculationResult> {
     const query = calculationRequest.query;
@@ -31,7 +31,7 @@ export class CalculatorController {
     return calculationResult;
   }
   @Get('calculus/history')
-  async getQueryCalculationHistory(): Promise<CalculationHistoryDto[]> {
+  public async getQueryCalculationHistory(): Promise<CalculationHistoryDto[]> {
     return await this.calculatorService.getQueryCalculationHistory();
   }
 }
