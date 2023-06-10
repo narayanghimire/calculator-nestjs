@@ -73,3 +73,25 @@ x-client: test-client
 - Success: `{ "query": string, "result": number }`
 - Error:  `{ "error": true, "message": "string" }`  with specific HTTP status code
    ```
+
+# Deployment Strategy
+
+## Quick Overview
+
+Hey there! So, I've set up a neat little system using GitHub Actions workflows for this project. The goal? To automate
+testing and send the project sailing smoothly onto Google Cloud.
+
+## The Flow of Things
+
+1. **Feature Branch:** When a pull request pops up, it triggers a build of feature branch. We run unit tests here,
+   aiming to get rapid feedback. Speed is key at this stage!
+
+2. **Code Review and Merging:** After the feature branch passes its tests and gets the thumbs up on code review,
+   we merge it with the main branch.
+
+3. **Main Branch Testing and Deployment:** Now, it's the main branch's turn to shine. 
+   We perform integration tests in this phase. If everything goes smoothly, 
+   we package everything into a Docker container and deploy it to a cloud provider or any other platform,
+    or on the stage or your specific requirements.
+
+There is a workflow for testing and features located in the .github/workflows directory."
