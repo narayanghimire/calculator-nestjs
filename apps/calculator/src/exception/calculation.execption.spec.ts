@@ -3,19 +3,19 @@ import { CalculationException } from '@app/calculator/src/exception/calculation.
 describe('CalculationException', () => {
   it('should throw CalculationException', () => {
     expect(() => CalculationException.throwCalculationException()).toThrowError(
-      'cannot perform calculation on given string',
+      'cannot perform calculation on given string'
     );
   });
 
   it('should  throwCannotSaveCalculatedValueException', () => {
     expect(() =>
-      CalculationException.throwCannotSaveCalculatedValueException(),
+      CalculationException.throwCannotSaveCalculatedValueException()
     ).toThrowError('unable to save calculated value in database');
   });
 
   it('should throw throwCalculationHistoryException', () => {
     expect(() =>
-      CalculationException.throwCalculationHistoryException(),
+      CalculationException.throwCalculationHistoryException()
     ).toThrowError('unable to get calculation history from database');
   });
 });

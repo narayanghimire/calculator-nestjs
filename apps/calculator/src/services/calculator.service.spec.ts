@@ -1,7 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import {
-  CALCULATION_REPOSITORY_PERSIST_TOKEN,
-} from '../constants/constants';
+import { CALCULATION_REPOSITORY_PERSIST_TOKEN } from '../constants/constants';
 import { CalculatorService } from '@app/calculator/src/services/calculator.service';
 import { CalculationException } from '@app/calculator/src/exception/calculation.exception';
 
@@ -41,7 +39,7 @@ describe('CalculatorService', () => {
       const query = '2+2';
       const result = 4;
       await expect(
-        service.persistCalculation(query, result),
+        service.persistCalculation(query, result)
       ).resolves.not.toThrow();
     });
 
@@ -53,7 +51,7 @@ describe('CalculatorService', () => {
         throw error;
       });
       await expect(service.persistCalculation(query, result)).rejects.toThrow(
-        CalculationException,
+        CalculationException
       );
     });
   });
@@ -62,7 +60,7 @@ describe('CalculatorService', () => {
     it('should return the calculation history if retrieval is successful', async () => {
       const history = [{ query: '2+2', result: 4 }];
       mockPersistenceRepo.getLastFiveCalculationsHistory.mockReturnValue(
-        history,
+        history
       );
       const result = await service.getQueryCalculationHistory();
       expect(result).toBe(history);
@@ -73,10 +71,10 @@ describe('CalculatorService', () => {
       mockPersistenceRepo.getLastFiveCalculationsHistory.mockImplementation(
         () => {
           throw error;
-        },
+        }
       );
       await expect(service.getQueryCalculationHistory()).rejects.toThrow(
-        CalculationException,
+        CalculationException
       );
     });
   });

@@ -16,8 +16,9 @@ services:
     volumes:
       - .:/usr/src/app
       - /usr/src/app/node_modules
+      - ./logs:/usr/src/app/logs
     ports:
-      - 8001:8001
+      - 8000:8000
     command: npm run start:dev calculator
     container_name: calculator
     depends_on:

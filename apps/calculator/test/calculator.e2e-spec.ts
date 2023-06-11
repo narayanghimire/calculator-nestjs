@@ -15,7 +15,7 @@ describe('CalculatorService (e2e)', () => {
 
     app = moduleFixture.createNestApplication();
     app.useGlobalPipes(
-      new ValidationPipe({ whitelist: true, transform: true }),
+      new ValidationPipe({ whitelist: true, transform: true })
     );
     await app.init();
     agent = supertest(app.getHttpServer());
@@ -56,7 +56,7 @@ describe('CalculatorService (e2e)', () => {
       .expect((response) => {
         expect(response.body.error).toBe(true);
         expect(response.body.message).toBe(
-          'cannot perform calculation on given string',
+          'cannot perform calculation on given string'
         );
       });
   });

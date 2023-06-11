@@ -11,5 +11,5 @@ export class CalculationSchemaClass extends Document {
 }
 
 export const CalculationSchema = SchemaFactory.createForClass(
-  CalculationSchemaClass,
+  CalculationSchemaClass
 );

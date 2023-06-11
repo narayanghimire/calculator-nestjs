@@ -23,7 +23,7 @@ describe('DefaultExceptionResponse', () => {
   it('should accept a custom message', () => {
     const customMessage = 'Custom error message';
     const responseWithCustomMessage = new DefaultExceptionResponse(
-      customMessage,
+      customMessage
     );
     expect(responseWithCustomMessage.message).toBe(customMessage);
   });

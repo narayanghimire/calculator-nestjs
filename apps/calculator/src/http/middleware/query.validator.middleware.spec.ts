@@ -3,7 +3,7 @@ import { Request, Response, NextFunction } from 'express';
 import { mock, instance, when, verify, anything } from 'ts-mockito';
 import { QueryValidatorMiddleware } from '@app/calculator/src/http/middleware/query.validator.middleware';
 import { QueryValidationService } from '@app/calculator/src/services/query.validation.service';
-import { DecryptService } from "@app/calculator/src/services/decrypt.service";
+import { DecryptService } from '@app/calculator/src/services/decrypt.service';
 
 describe('QueryValidatorMiddleware', () => {
   let middleware: QueryValidatorMiddleware;
@@ -40,7 +40,7 @@ describe('QueryValidatorMiddleware', () => {
 
   it('should validate base64 query and decrypt it', () => {
     when(
-      mockQueryValidationService.isBase64EncodedString(anything()),
+      mockQueryValidationService.isBase64EncodedString(anything())
     ).thenReturn(true);
     when(mockDecrypter.decrypt(anything())).thenReturn('decrypted-query');
 
@@ -53,7 +53,7 @@ describe('QueryValidatorMiddleware', () => {
 
   it('should throw error when query is not base64 encoded', () => {
     when(
-      mockQueryValidationService.isBase64EncodedString(anything()),
+      mockQueryValidationService.isBase64EncodedString(anything())
     ).thenReturn(false);
 
     expect(() => middleware.use(req, res, next)).toThrowError();
@@ -64,7 +64,7 @@ describe('QueryValidatorMiddleware', () => {
 
   it('should throw error when query can not be decrypted', () => {
     when(
-      mockQueryValidationService.isBase64EncodedString(anything()),
+      mockQueryValidationService.isBase64EncodedString(anything())
     ).thenReturn(true);
     when(mockDecrypter.decrypt(anything())).thenThrow(new Error());
 

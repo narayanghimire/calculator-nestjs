@@ -23,7 +23,7 @@ describe('BadRequestExceptionResponse', () => {
   it('should accept a custom message', () => {
     const customMessage = 'Custom error message';
     const responseWithCustomMessage = new BadRequestExceptionResponse(
-      customMessage,
+      customMessage
     );
     expect(responseWithCustomMessage.message).toBe(customMessage);
   });

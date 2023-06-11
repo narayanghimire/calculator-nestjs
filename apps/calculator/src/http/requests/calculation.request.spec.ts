@@ -6,7 +6,7 @@ describe('CalculationRequest', () => {
     calculationRequest.query = 'MiAqICgyMy8oMyozKSktIDIzICogKDIqMyk9=';
 
     expect(calculationRequest.query).toBe(
-      'MiAqICgyMy8oMyozKSktIDIzICogKDIqMyk9=',
+      'MiAqICgyMy8oMyozKSktIDIzICogKDIqMyk9='
     );
   });
 

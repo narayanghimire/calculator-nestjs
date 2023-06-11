@@ -23,7 +23,7 @@ describe('ClientIdentifierExceptionResponse', () => {
   it('should accept a custom message', () => {
     const customMessage = 'Custom error message';
     const responseWithCustomMessage = new ClientIdentifierExceptionResponse(
-      customMessage,
+      customMessage
     );
     expect(responseWithCustomMessage.message).toBe(customMessage);
   });

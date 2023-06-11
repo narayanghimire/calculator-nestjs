@@ -10,22 +10,22 @@ import { CalculationResult } from '@app/calculator/src/entities/calculation.resu
 export class CalculatorController {
   constructor(
     private readonly calculatorService: CalculatorService,
-    private readonly decryptService: DecryptService,
+    private readonly decryptService: DecryptService
   ) {}
 
   @Get('calculus')
   public async calculate(
-    @Query() calculationRequest: CalculationRequest,
+    @Query() calculationRequest: CalculationRequest
   ): Promise<CalculationResult> {
     const query = calculationRequest.query;
     const decryptedString = this.decryptService.decrypt(query);
 
     const calculationResult = await this.calculatorService.calculate(
-      decryptedString,
+      decryptedString
     );
     await this.calculatorService.persistCalculation(
       query,
-      calculationResult.result,
+      calculationResult.result
     );
 
     return calculationResult;

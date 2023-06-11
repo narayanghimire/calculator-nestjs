@@ -1,7 +1,7 @@
 export class QueryException extends Error {
   public static throwIsNotBase64IncodedString(): never {
     throw new QueryException(
-      'Invalid string is given, Please provide base64 encoded string',
+      'Invalid string is given, Please provide base64 encoded string'
     );
   }
   public static throwInvalidString(): never {

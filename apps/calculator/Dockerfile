@@ -4,6 +4,8 @@ FROM node:16-alpine as development
 WORKDIR /usr/src/app
 
 COPY package*.json ./
+# Create the logs directory
+RUN mkdir logs
 
 RUN npm install
 
@@ -23,6 +25,8 @@ WORKDIR /usr/src/app
 
 COPY package*.json ./
 
+# Create the logs directory
+RUN mkdir logs
 RUN npm install --only=production
 
 COPY . .

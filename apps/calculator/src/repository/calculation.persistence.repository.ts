@@ -12,14 +12,16 @@ export class CalculationPersistenceRepository
 {
   constructor(
     @InjectModel(CalculationSchemaClass.name)
-    private calculationModel: Model<CalculationSchemaClass>,
+    private calculationModel: Model<CalculationSchemaClass>
   ) {}
 
   public async saveCalculation(query: string, result: number): Promise<void> {
     await this.calculationModel.create({ query, result });
   }
 
-  public async getLastFiveCalculationsHistory(): Promise<CalculationHistoryDto[]> {
+  public async getLastFiveCalculationsHistory(): Promise<
+    CalculationHistoryDto[]
+  > {
     const calculationHistory = await this.calculationModel
       .find()
       .sort({ createdAt: -1 })
@@ -27,7 +29,7 @@ export class CalculationPersistenceRepository
       .exec();
 
     return calculationHistory.map((calculation) =>
-      plainToInstance(CalculationHistoryDto, calculation.toObject()),
+      plainToInstance(CalculationHistoryDto, calculation.toObject())
     );
   }
 }
