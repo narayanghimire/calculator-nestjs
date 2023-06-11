@@ -1,7 +1,16 @@
-# Calculator API 
+# Calculus API
 
-Hi there! I've made this small demo project using TypeScript and Nestjs. 
-The idea? To let you see how I tackle problems and plan out my work.
+Performs calculus operations for base64 encoded string.
+This simple web service to implement a calculator. The service offers an endpoint that reads a string input and parses it.
+It returns either an HTTP error code, or a solution to the calculation in JSON form. Furthermore,
+the service  offer the possibility to return the last 5 calculations with their results.
+Supported mathematical symbols are `+, -, *, /, (, )`
+
+An example calculus query:
+```
+query: 2 * (23/(3*3))- 23 * (2*3)
+encoded: MiAqICgyMy8oMyozKSktIDIzICogKDIqMyk=
+```
 
 You might be wondering, `Why such a detailed design for a small project?` 
 Well, I wanted to give you a good look at how I work in software development, 
@@ -35,20 +44,6 @@ To run the application, make sure you have Docker installed to avoid any databas
 ## Integration Test:
    $ docker-compose run calculator npm run test:e2e
    ```
-## Calculus API
-
-Performs calculus operations for base64 encoded string.
-This simple web service to implement a calculator. The service offers an endpoint that reads a string input and parses it.
-It  return either an HTTP error code, or a solution to the calculation in JSON form. Furthermore, 
-the service  offer the possibility to return the last 5 calculations with their results.
-Supported mathematical symbols are `+, -, *, /, (, )`
-
-An example calculus query:
-```
-query: 2 * (23/(3*3))- 23 * (2*3)
-encoded: MiAqICgyMy8oMyozKSktIDIzICogKDIqMyk=
-```
-
 ### Endpoint: GET /calculus
 
 ##### Request
