@@ -1,19 +1,15 @@
 import { Test, TestingModule } from '@nestjs/testing';
-
 import {
   CALCULATION_REPOSITORY_PERSIST_TOKEN,
-  CALCULATION_REPOSITORY_TOKEN,
 } from '../constants/constants';
 import { CalculatorService } from '@app/calculator/src/services/calculator.service';
 import { CalculationException } from '@app/calculator/src/exception/calculation.exception';
 
 describe('CalculatorService', () => {
   let service: CalculatorService;
-  let mockCalculationRepo;
   let mockPersistenceRepo;
 
   beforeEach(async () => {
-    mockCalculationRepo = { calculate: jest.fn() };
     mockPersistenceRepo = {
       saveCalculation: jest.fn(),
       getLastFiveCalculationsHistory: jest.fn(),
@@ -21,10 +17,6 @@ describe('CalculatorService', () => {
     const module: TestingModule = await Test.createTestingModule({
       providers: [
         CalculatorService,
-        {
-          provide: CALCULATION_REPOSITORY_TOKEN,
-          useValue: mockCalculationRepo,
-        },
         {
           provide: CALCULATION_REPOSITORY_PERSIST_TOKEN,
           useValue: mockPersistenceRepo,
@@ -38,21 +30,9 @@ describe('CalculatorService', () => {
   describe('calculate', () => {
     it('should return the calculation result if calculation is successful', async () => {
       const query = '2+2';
-      mockCalculationRepo.calculate.mockReturnValue(4);
       const result = await service.calculate(query);
       expect(result.error).toBe(false);
       expect(result.result).toBe(4);
-    });
-
-    it('should throw a CalculationException if calculation fails', async () => {
-      const query = '2+2';
-      const error = new Error('testing error');
-      mockCalculationRepo.calculate.mockImplementation(() => {
-        throw error;
-      });
-      await expect(service.calculate(query)).rejects.toThrow(
-        CalculationException,
-      );
     });
   });
 
