@@ -71,7 +71,7 @@ Retrieves the last 5 records of calculus operations.
    ```bash
 GET /calculus/history HTTP/1.1
 Host: localhost:8000
-x-client: test-client
+x-client: test-client(you have to use this as HTTP request header key & value)
    ```
 ##### Response
    ```bash
